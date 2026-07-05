@@ -1,29 +1,25 @@
-; ===========================================
-; HexOS_!
-; Multiboot Header
-; ===========================================
+# boot/multiboot.asm
+.code32
 
-MBALIGN equ 1<<0
-MEMINFO equ 1<<1
-FLAGS equ MBALIGN | MEMINFO
-MAGIC equ 0x1BADB002
-CHECKSUM equ -(MAGIC + FLAGS)
+.section .multiboot
+.align 4
+.long 0x1BADB002    # MAGIC
+.long 0x00000003    # FLAGS
+.long 0xE4524FFB    # CHECKSUM
 
-section .multiboot
-align 4
+.section .bss
+.align 16
+stack_bottom:
+    .skip 16384     # 16 KB stack
+stack_top:
 
-dd MAGIC
-dd FLAGS
-dd CHECKSUM
-
-section .text
-global start
-extern kernel_main
+.section .text
+.global start
+.extern kernel_main
 
 start:
-
     cli
-
+    mov $stack_top, %esp   # Set up the stack before entering C
     call kernel_main
 
 .hang:

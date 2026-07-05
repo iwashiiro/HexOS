@@ -1,7 +1,7 @@
 #include "keyboard.h"
 #include "ports.h"
 
-/* PS/2 scancode set 1 → ASCII (partial, lowercase) */
+/* PS/2 scancode set 1 to ASCII (partial, lowercase) */
 static const char scancode_ascii[128] = {
     0,   27, '1','2','3','4','5','6','7','8','9','0','-','=','\b',
     '\t','q','w','e','r','t','y','u','i','o','p','[',']','\n',
@@ -52,11 +52,13 @@ void keyboard_handler() {
         sc &= 0x7F;
         if (sc == 0x2A || sc == 0x36) shift_down = 0;
     } else {
-        if (sc == 0x2A || sc == 0x36) { shift_down = 1; return; }
-        char c = shift_down ? scancode_shift[sc] : scancode_ascii[sc];
-        if (c) {
-            kbd_buf[kbd_head % KBD_BUF] = c;
-            kbd_head++;
+        if (sc == 0x2A || sc == 0x36) { shift_down = 1; }
+        else {
+            char c = shift_down ? scancode_shift[sc] : scancode_ascii[sc];
+            if (c) {
+                kbd_buf[kbd_head % KBD_BUF] = c;
+                kbd_head++;
+            }
         }
     }
     outb(PIC1_CMD, PIC_EOI);

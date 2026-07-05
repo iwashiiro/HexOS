@@ -2,29 +2,29 @@ ENTRY(start)
 
 SECTIONS
 {
+    /* Il kernel viene caricato a 1MB */
     . = 1M;
 
-    .multiboot ALIGN(4K) :
+    /* Uniamo la sezione multiboot e il codice eseguibile */
+    .text BLOCK(4K) : ALIGN(4K)
     {
-        *(.multiboot)
-    }
-
-    .text ALIGN(4K) :
-    {
+        /* Il comando KEEP impedisce al linker di eliminare questa sezione
+           anche se pensa che non sia usata. La mettiamo in cima a tutto. */
+        KEEP(*(.multiboot))
         *(.text*)
     }
 
-    .rodata ALIGN(4K) :
+    .rodata BLOCK(4K) : ALIGN(4K)
     {
         *(.rodata*)
     }
 
-    .data ALIGN(4K) :
+    .data BLOCK(4K) : ALIGN(4K)
     {
         *(.data*)
     }
 
-    .bss ALIGN(4K) :
+    .bss BLOCK(4K) : ALIGN(4K)
     {
         *(COMMON)
         *(.bss*)
