@@ -1,4 +1,4 @@
-# HexOS_! — Built hex by hex
+# HexOS_! - Built hex by hex.
 
 <p align="center">
   <img src="logo.png" alt="HexOS_! Logo" width="230" />
@@ -27,12 +27,14 @@ The ultimate goal is to build a cutting-edge, extremely lightweight, secure, and
 
 ## Meet the Core Team.
 
-The operating system is being developed by the two of us, leveraging a strategic split of roles to cover the entire engineering pipeline:
+The operating system is being developed by the three of us, leveraging a strategic split of roles to cover the entire engineering pipeline:
 
 * **MRX (Kernel Architect & Toolchain Engineer)**
   * *Focus:* Managing cross-compilation, isolating the host environment, optimizing the Linux Kernel `.config` file, and configuring native hardware modules. The guardian of low-level performance and stability.
 * **HexFud (SysOps Developer & User-Space Engineer)**
   * *Focus:* Managing user environments, writing initialization scripts (*System V Init*), configuring network daemons, shadow file security, and structuring the system directory tree.
+* **Axor312008 (Contributor)**
+  * *Focus:* Supporting the team across the build pipeline. Role details to be filled in. Building the GUI.
 
 ---
 
