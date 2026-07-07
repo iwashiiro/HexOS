@@ -1,0 +1,3 @@
+E:/AXOR/0 - COMPITI/Progetto DE/FinsternOS/Halbschatten/build/CMakeFiles/Halbschatten.dir
+E:/AXOR/0 - COMPITI/Progetto DE/FinsternOS/Halbschatten/build/CMakeFiles/edit_cache.dir
+E:/AXOR/0 - COMPITI/Progetto DE/FinsternOS/Halbschatten/build/CMakeFiles/rebuild_cache.dir
